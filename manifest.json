@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+
+  "name": "MultiDictionary Extension",
+  "description": "This extension will show meaning of word in the context of multiple dictionaries",
+  "version": "1.0",
+  "permissions": ["contextMenus", "activeTab"],
+  "background": {
+    "scripts": ["js/jquery-3.2.1.min.js", "js/backgroundScript.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "file://*/*"
+      ],
+      "css": ["themes/default/css/content-main.css"],
+      "js": [/*"js/jquery-3.2.1.min.js", */ "js/contentScript.js", "themes/default/js/content-main.js"],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    "themes/default/images/*.png",
+    "themes/default/css/*",
+    "themes/default/js/*",
+    "themes/default/templates/*"
+  ]
+}

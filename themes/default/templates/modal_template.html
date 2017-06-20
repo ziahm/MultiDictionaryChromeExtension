@@ -1,0 +1,43 @@
+<!-- Modal -->
+<div class="modal fade" id="dictionaryModal" role="dialog">
+  <div class="modal-dialog dictionary-modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Definition of <span id="dictionary_searched_word">[Word]</span></h4>
+      </div>
+      <div class="modal-body">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#oxford">Oxford</a></li>
+          <li><a data-toggle="tab" href="#longman">Longman</a></li>
+          <li><a data-toggle="tab" href="#bangla">bangla</a></li>
+        </ul>
+
+        <div class="tab-content dict-tab-content">
+          <div id="oxford" class="tab-pane fade in active">
+             <div class="animationload">
+                <div class="osahanloading"></div>
+            </div>
+          </div>
+          <div id="longman" class="tab-pane fade">
+            <div class="animationload">
+                <div class="osahanloading"></div>
+            </div>
+          </div>
+          <div id="bangla" class="tab-pane fade">
+            <div class="animationload">
+                <div class="osahanloading"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    
+  </div>
+</div>
+  

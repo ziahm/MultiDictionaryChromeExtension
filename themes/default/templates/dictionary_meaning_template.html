@@ -1,0 +1,97 @@
+<div class="phonetic-pronunciation-container">
+  {% if data.phonetic_british %}
+    <span class="prefix">BrE</span> <span class="phon">{{data.phonetic_british}}</span>
+  {% endif %}
+  {% if data.pronunciation_sound_british %}
+    <span class="british-sound play-pronunciation-sound" data-src-mp3="{{data.pronunciation_sound_british}}" title="British Pronunciation"></span>
+  {% endif %}
+  {% if data.phonetic_american %}
+    <span class="prefix">NAmE</span> <span class="phon">{{data.phonetic_american}}</span>
+  {% endif %}
+  {% if data.pronunciation_sound_american %}
+    <span class="name-sound play-pronunciation-sound" data-src-mp3="{{data.pronunciation_sound_american}}" title="Americal Pronunciation"></span>
+  {% endif %}
+</div>
+
+<div class="definition-container">
+  {% if data.definition_groups|length %}
+    <div class="definition-group-container">
+
+      {% for definition_group in data.definition_groups %}
+        <span class="definition-group-name">
+          {{definition_group.group_name}}
+        </span>
+        <div class="group-definitions-container">
+          <ol class="definitions-lists">
+            {% for group_definition in definition_group.definitions %}
+              <li>
+                <span class="definition">{{group_definition.definition}}</span>
+                {% if group_definition.example_usage_format_groups|length %}
+                  <ul class="definition-example-usage-format-group">
+                    {% for example_usage_format_group in group_definition.example_usage_format_groups %}
+                      <li>
+                        <span class="usage-format-group-name">{{example_usage_format_group.format_group_name}}</span>
+                        <ul class="usage-format-group-examples">
+                          {% for format_group_example in example_usage_format_group.format_group_examples %}
+                            <li>{{format_group_example}}</li>
+                          {% endfor %}
+                        </ul>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+
+                {% if group_definition.definition_examples|length %}
+                  <ul class="definition-examples">
+                    {% for definition_example in group_definition.definition_examples %}
+                      <li>{{definition_example}}</li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            
+            {% endfor %}
+          </ol>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+
+  {% if data.definitions|length %}
+    <ol class="definitions-lists">
+      {% for defn in data.definitions %}
+        <li>
+          <span class="definition">{{defn.definition}}</span>
+
+          {% if defn.example_usage_format_groups|length %}
+            <ul class="definition-example-usage-format-group">
+              {% for example_usage_format_group in defn.example_usage_format_groups %}
+                <li>
+                  <span class="usage-format-group-name">{{example_usage_format_group.format_group_name}}</span>
+
+                  {% if example_usage_format_group.format_group_examples|length %}
+                    <ul class="usage-format-group-examples">
+                      {% for format_group_example in example_usage_format_group.format_group_examples %}
+                        <li>{{format_group_example}}</li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+          {% if defn.definition_examples|length %}
+            <ul class="definition-examples">
+              {% for definition_example in defn.definition_examples %}
+                <li>{{definition_example}}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  {% endif %}
+</div>
