@@ -79,11 +79,16 @@ chrome.runtime.onMessage.addListener(
           $('#longman').html(noMeaningTxt);
         }
         
-        if(dictionaryResponse.bangla.meaningImage) {
-          $('#bangla').html('<img src="' + dictionaryResponse.bangla.meaningImage + '"/>');
-        }
-        else if(dictionaryResponse.bangla.meaningText) {
-          $('#bangla').html(dictionaryResponse.bangla.meaningText);
+        if(dictionaryResponse.bangla) {
+          if(dictionaryResponse.bangla.meaningImage) {
+            $('#bangla').html('<img src="' + dictionaryResponse.bangla.meaningImage + '"/>');
+          }
+          else if(dictionaryResponse.bangla.meaningText) {
+            $('#bangla').html(dictionaryResponse.bangla.meaningText);
+          }
+          else {
+            $('#bangla').html(noMeaningTxt)
+          }
         }
         else {
           $('#bangla').html(noMeaningTxt)
