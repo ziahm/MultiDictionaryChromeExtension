@@ -20,6 +20,7 @@ function genericOnClick(info, tab) {
       });
   });
 
+  // Send message to open modal
   var msgPromise = new Promise(function(resolve, reject) {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
       chrome.tabs.sendMessage(tabs[0].id, {text: searchWord, type: 'open_modal'}, function(response) {
@@ -33,6 +34,7 @@ function genericOnClick(info, tab) {
     });
   })
 
+  // After modal is opened, send the dictionary meanings to show in the modal
   msgPromise
   .then(function(dictionaryResponse) {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
